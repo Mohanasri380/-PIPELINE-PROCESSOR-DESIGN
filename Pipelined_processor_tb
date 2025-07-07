@@ -1,0 +1,25 @@
+`timescale 1ns / 1ps
+
+module tb_pipelined_processor;
+
+    // Clock signal
+    reg clk;
+
+    // Instantiate the processor
+    pipelined_processor uut (
+        .clk(clk)
+    );
+
+    // Clock generation
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk; // 10ns clock period
+    end
+
+    // Run simulation for some time
+    initial begin
+        // Run for 100ns
+        #100 $finish;
+    end
+
+endmodule
